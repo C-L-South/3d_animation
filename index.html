@@ -2,7 +2,7 @@
 <html>
 <head>
   <script type="module"
-  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
   </script>
 
   <style>
@@ -21,12 +21,33 @@
 <body>
 
 <model-viewer
-  src="568f975e-89bc-46a2-adea-493694a47db6.glb"
+  id="model"
+  src=""
   autoplay
   camera-controls
   animation-speed="0.7"
   environment-image="neutral">
 </model-viewer>
+
+<script>
+  const viewer = document.getElementById("model");
+
+  function showSquat() {
+    viewer.src = "Squat14_Good.glb";
+  }
+
+  function showLunge() {
+    viewer.src = "Lunge5_Good.glb";
+  }
+
+  function showOverhead() {
+    viewer.src = "Overhead1_Good.glb";
+  }
+
+  function showChild() {
+    viewer.src = "Child.glb";
+  }
+</script>
 
 </body>
 </html>
