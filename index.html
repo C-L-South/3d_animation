@@ -25,9 +25,35 @@ video {
 <body>
 
 <video autoplay loop muted playsinline>
-    <source src="squat.mp4" type="video/mp4">
+    <source src="overhead.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
+<script>
+function showVideo(filename) {
+    const video = document.getElementById("videoPlayer");
+    const source = document.getElementById("videoSource");
 
+    source.src = filename;
+    video.load();
+    video.play();
+}
+
+function showSquat() {
+    showVideo("squat.mp4");
+}
+
+function showOverhead() {
+    showVideo("overhead.mp4");
+}
+
+function showLunge() {
+    showVideo("lunge.mp4");
+}
+
+function showChild() {
+    showVideo("child.mp4");
+}
+
+</script>
 </body>
 </html>
