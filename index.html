@@ -17,24 +17,24 @@ html, body {
 video {
     width: 100vw;
     height: 100vh;
-    object-fit: contain; /* Use "cover" to fill the screen */
+    object-fit: contain;
     background: #f9f9f9;
 }
 </style>
 </head>
 <body>
 
-<video autoplay loop muted playsinline>
-    <source src="overhead.mp4" type="video/mp4">
+<video id="videoPlayer" autoplay loop muted playsinline
+       src="overhead.mp4">
     Your browser does not support the video tag.
 </video>
-<script>
-function showVideo(filename) {
-    const video = document.getElementById("videoPlayer");
-    const source = document.getElementById("videoSource");
 
-    source.src = filename;
-    video.load();
+<script>
+const video = document.getElementById("videoPlayer");
+
+function showVideo(filename) {
+    if (video.src.endsWith(filename)) return; // Optional: don't reload same video
+    video.src = filename;
     video.play();
 }
 
@@ -53,7 +53,7 @@ function showLunge() {
 function showChild() {
     showVideo("child.mp4");
 }
-
 </script>
+
 </body>
 </html>
