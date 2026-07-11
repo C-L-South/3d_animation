@@ -1,53 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <script type="module"
-    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #fffff;
-    }
+<style>
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+}
 
-    model-viewer {
-      width: 100vw;
-      height: 100vh;
-    }
-  </style>
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain; /* Use "cover" to fill the screen */
+    background: #f9f9f9;
+}
+</style>
 </head>
-
 <body>
 
-<model-viewer
-  id="model"
-  src="Squat14_Good.glb"
-  autoplay
-  camera-controls
-  animation-speed="0.7"
-  environment-image="neutral">
-</model-viewer>
-
-<script>
-  const viewer = document.getElementById("model");
-
-  function showSquat() {
-    viewer.src = "Squat14_Good.glb";
-  }
-
-  function showLunge() {
-    viewer.src = "Lunge5_Good.glb";
-  }
-
-  function showOverhead() {
-    viewer.src = "Overhead1_Good.glb";
-  }
-
-  function showChild() {
-    viewer.src = "Child.glb";
-  }
-</script>
+<video autoplay loop muted playsinline>
+    <source src="squat.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
 </body>
 </html>
