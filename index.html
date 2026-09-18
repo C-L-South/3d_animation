@@ -15,6 +15,7 @@ html, body {
 }
 
 video {
+    visibility: hidden;
     width: 100vw;
     height: 100vh;
     object-fit: contain;
@@ -24,18 +25,38 @@ video {
 </head>
 <body>
 
-<video id="videoPlayer" autoplay loop muted playsinline
-       src="desk setup feature.m4v">
+<video id="videoPlayer" loop muted playsinline preload="auto">
     Your browser does not support the video tag.
 </video>
 
 <script>
 const video = document.getElementById("videoPlayer");
 
+function hideVideo() {
+    video.style.visibility = "hidden";
+}
+
+video.addEventListener("loadstart", hideVideo);
+video.addEventListener("emptied", hideVideo);
+video.addEventListener("error", hideVideo);
+
+// Wait until the browser can play through before starting playback.
+video.addEventListener("canplaythrough", () => {
+    video.play().catch(hideVideo);
+});
+
+// Keep the native placeholder hidden until playback actually starts.
+video.addEventListener("playing", () => {
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        video.style.visibility = "visible";
+    }
+});
+
 function showVideo(filename) {
-    if (video.src.endsWith(filename)) return; // Optional: don't reload same video
+    if (video.src === new URL(filename, document.baseURI).href) return;
+    hideVideo();
     video.src = filename;
-    video.play();
+    video.load();
 }
 
 function showSquat() {
